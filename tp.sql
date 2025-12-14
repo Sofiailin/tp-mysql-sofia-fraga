@@ -91,7 +91,7 @@ CREATE TABLE historial_clinico (
 -- ● 2 veterinarios con especialidades distintas
 -- ● 3 registros de historial clínico
 
-INSERT INTO duenos (nombre, apellido, telefono, direccion) 
+INSERT INTO duenos (nombre, apellido, telefono, direccion) -- Insertar informacion en las tablas
 VALUES
         ('Marge', 'Bouvier', '123456789', 'Calle Falsa 123'),
         ('Lisa', 'Simpson', '987654321', 'Avenida Siempre Viva 742'),
@@ -120,11 +120,36 @@ INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion) VALUES
 -- 2. Actualizar la especialidad de un veterinario (por ID o matrícula).
 -- 3. Editar la descripción de un historial clínico (por ID).
 
+UPDATE duenos      -- Cambiar la direccion del dueño con id 1
+SET direccion = 'Avenida Siempre Viva 742'
+WHERE id = 1; 
+
+UPDATE veterinarios
+SET especialidad = 'Cirugia de Animales Exoticos'
+WHERE matricula = 'M67890';  
+
+UPDATE historial_clinico
+SET descripcion = 'Mordio un cable electrico.'      
+WHERE id = 1;
+
 
 -- Ejercicio 8 – Eliminar registros
 -- 1. Eliminar una mascota (por ID o nombre).
 -- 2. Verificar que se eliminen automáticamente los registros del historial clínico asociados
 -- (ON DELETE CASCADE).
+
+-- Modificar la llave foránea para aplicar ON DELETE CASCADE y ON UPDATE CASCADE
+ALTER TABLE historial_clinico
+ADD CONSTRAINT fk_historial_mascota_cascade -- Le damos un nombre de la nueva restricción
+FOREIGN KEY (id_mascota)
+REFERENCES mascotas(id)
+ON DELETE CASCADE -- Evita registros "huérfanos".
+ON UPDATE CASCADE; -- Se cambia el id de una mascota actualiza automáticamente id_mascota en todos los asociados
+
+DELETE FROM mascotas    -- Eliminar la mascota con id 1
+WHERE id = 1;
+
+SELECT * FROM historial_clinico;   -- consulta si se borro el dato pedido
 
 
 -- Ejercicio 9 – JOIN simple
@@ -132,6 +157,8 @@ INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion) VALUES
 -- ● Nombre de la mascota
 -- ● Especie
 -- ● Nombre completo del dueño (nombre + apellido)
+
+
 
 
 -- Ejercicio 10 – JOIN múltiple con historial
