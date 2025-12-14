@@ -1,75 +1,37 @@
-# tp-mysql-sofia-fraga
+# 💻 TP - MySQL Veterinaria "Patitas Felices 🐾" 
 
-Trabajo Práctico - MySQL Veterinaria "Patitas Felices"
+## 📋 Resumen del Proyecto
 
-Objetivo
+Este repositorio contiene los scripts de SQL escritos para el Trabajo Intermedio sobre "base de datos" del curso de Backend Developer. 
+El objetivo es diseñar e implementar un sistema de gestión de base de datos relacional para la veterinaria "Patitas Felices" utilizando MySQL.
 
-Este trabajo práctico tiene como objetivo principal que los estudiantes demuestren sus
-conocimientos en el diseño, creación y manipulación de bases de datos relacionales
-utilizando MySQL. A través de la implementación de un sistema de gestión para una
-veterinaria, se evaluará la capacidad de:
+El proyecto abarca la creación de la estructura de la base de datos, el establecimiento de las relaciones (con PK Y FK), la realización de operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y la ejecución de consultas complejas (JOINs) para la gestión de dueños, mascotas, veterinarios e historial clínico.
 
-● Diseñar un esquema de base de datos relacional apropiado
-● Crear tablas con relaciones de integridad referencial (claves foráneas)
-● Realizar operaciones CRUD (Create, Read, Update, Delete)
-● Aplicar consultas complejas utilizando JOINs
-● Gestionar la integridad de los datos mediante transacciones y eliminaciones en cascada
+### 💾 Estructura de la Base de Datos (Esquema Relacional)
+
+La base de datos `veterinaria_patitas_felices` está compuesta por cinco (5) tablas principales relacionadas entre sí.
+
+- Informacion sobre los duenos
+- Informacion sobre las mascotas y quien es su dueno
+- Informacion sobre los veterinario 
+- Informacion sobre el historial clinico de cada mascota y que veterinario los atendio.
+
+Operaciones CRUD Básicas 
+
+- Donde se crearon 3 duenos diferentes, 3 mascotas, 2 veterinarios y 3 registros de historia clínica.
+- Se actualizaron y eliminaron datos especificos sobre la informacion ingresada en las tablas.
+- Se modifico una restriccion para que al eliminar un dato se eliminen tambien los datos relacionados automaticamente y no queden datos "huerfanos".
+
+Consultas con JOINs 
+
+Se realizo una consulta simple sobre quien es el dueno de que mascota , especificando tambien la especie
+Y se realizo una consulta del historial clinico, pidiendo tambien : nombre y especie de la mascota, nombre completo del dueño, nombre completo del veterinario, fecha de registro y descripción. Se uso el "LEFT JOIN" que muestra todos los datos de las entradas del historial clínico sean incluidas en el resultado aunque no tenga los otros datos asociados.
+
+#### 🚀 Requisitos Técnicos
+
+* Motor de Base de Datos:* MySQL
 
 
-Entrega
+👨‍💻 Sofia Ailin Fraga
 
-● La entrega se realizará mediante un repositorio público en GitHub.
-● El repositorio debe incluir:
-○ Scripts SQL con todas las consultas realizadas (archivo .sql o múltiples archivos organizados).
-● El nombre del repositorio debe ser: tp-mysql-[nombre-apellido].
-
-Requisitos técnicos obligatorios
-● MySQL
-● Editor de texto o IDE para escribir scripts SQL
-● Conocimientos previos en:
-○ SQL básico (CREATE, INSERT, UPDATE, DELETE, SELECT)
-○ Claves primarias y foráneas
-○ Relaciones entre tablas
-○ Consultas con JOIN
-
-Descripción del proyecto
-La veterinaria "Patitas Felices" necesita un sistema de gestión para administrar sus datos.
-El sistema debe permitir:
-● Gestionar dueños de mascotas
-● Registrar mascotas y su relación con sus dueños
-● Administrar veterinarios y sus especialidades
-● Registrar el historial clínico, vinculando mascotas, veterinarios y fechas
-El sistema debe garantizar la integridad de los datos mediante relaciones adecuadas y
-permitir consultas combinadas entre varias tablas.
-
-Criterios de evaluación
-Criterio Peso
-Ejercicio 01 5%
-Ejercicio 02 5%
-Ejercicio 03 5%
-Ejercicio 04 5%
-Ejercicio 05 5%
-Ejercicio 06 15%
-Ejercicio 07 15%
-Ejercicio 08 15%
-Ejercicio 09 15%
-Ejercicio 10 15%
-
-Recomendaciones
-Se valorará especialmente:
-● Código SQL limpio y comentado
-● Organización del proyecto
-● Nomenclatura clara y consistente
-● Buenas prácticas:
-○ Uso de índices en claves foráneas
-○ Restricciones NOT NULL cuando corresponda
-Recursos adicionales
-● Documentación oficial de MySQL
-● Tutoriales básicos de SQL
-
-Soporte
-
-Ante dudas, consultar:
-● Documentación de MySQL
-● Materiales del curso
-● Instructor/a
+📅 2025 – Diplomatura en Desarrollo Web Full Stack (UTN BA)

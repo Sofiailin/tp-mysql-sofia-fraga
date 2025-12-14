@@ -158,7 +158,14 @@ SELECT * FROM historial_clinico;   -- consulta si se borro el dato pedido
 -- ● Especie
 -- ● Nombre completo del dueño (nombre + apellido)
 
+SELECT 
+        m.nombre AS nombre_mascota,
+        m.especie AS especie_mascota,
+        CONCAT(d.nombre, ' ', d.apellido) AS nombre_completo_dueno -- CONCAT para unir el nombre y el apellido del dueño en una sola columna.
+FROM 
+    mascotas m 
 
+INNER JOIN duenos d ON m.id_dueno = d.id;  -- se usa INNER JOIN porque estamos haciendo una consulta simple entre tablas
 
 
 -- Ejercicio 10 – JOIN múltiple con historial
@@ -168,3 +175,19 @@ SELECT * FROM historial_clinico;   -- consulta si se borro el dato pedido
 -- ● Nombre completo del veterinario
 -- ● Fecha de registro
 -- ● Descripción
+
+SELECT
+    CONCAT (m.nombre, ' - ', m.especie) AS Nombre_Mascota_Especie, -- use el CONCAT para que las expresiones de las columnas se vean mejor.
+    CONCAT(d.nombre, ' ', d.apellido) AS Nombre_Completo_Dueno,
+    CONCAT(v.nombre, ' ', v.apellido) AS Nombre_Completo_Veterinario,
+    h.fecha_registro AS Fecha_Registro,
+    h.descripcion AS Descripcion_Clinica
+FROM
+    historial_clinico h 
+LEFT JOIN
+    mascotas m ON h.id_mascota = m.id -- Usamos LEFT JOIN para incluir todos los registros del historial, 
+                                      -- incluso si no tienen mascota, dueño o veterinario asociado.
+LEFT JOIN
+    duenos d ON m.id_dueno = d.id 
+LEFT JOIN
+    veterinarios v ON h.id_veterinario = v.id; 
